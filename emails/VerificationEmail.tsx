@@ -1,37 +1,34 @@
-import { Html,Head, Font, Preview, Heading, Row, Section,  Button } from "@react-email/components";
+import { Html, Head, Preview, Section, Row, Text } from "@react-email/components";
 
 interface VerificationEmailProps {
-    username: string;
-    otp: string;
+  username: string;
+  otp: string;
 }
 
 export default function VerificationEmail({ username, otp }: VerificationEmailProps) {
-    return (
-        <Html lang='en' dir='ltr'>
-            <Head>
-                <title>Verification Code</title>
-                
-            </Head>
-            <Preview>Your verification code : {otp}</Preview>
-            <Section >
+  return (
+    <Html lang="en" dir="ltr">
+      <Head>
+        <title>Verification Code</title>
+      </Head>
+      <Preview>Your verification code: {otp}</Preview>
 
-                <Row >
-                    <text >Hello {username},</text>    
-                    
-                </Row>
-                 <Row >
-                    <text >Thank you for registering. please use the following verification code to complete your registration </text>    
-                    
-                </Row>
-                <Row >
-                    <text > {otp},</text>    
-                    
-                </Row>
-                <Row >
-                    <text > If you did not request this code , please ignore this email</text>    
-                    
-                </Row>
-            </Section>
-        </Html>
-    )
-}       
+      <Section>
+        <Row>
+          <Text>Hello {username},</Text>
+        </Row>
+        <Row>
+          <Text>
+            Thank you for registering. Please use the following verification code to complete your registration:
+          </Text>
+        </Row>
+        <Row>
+          <Text>{otp}</Text>
+        </Row>
+        <Row>
+          <Text>If you did not request this code, please ignore this email.</Text>
+        </Row>
+      </Section>
+    </Html>
+  );
+}

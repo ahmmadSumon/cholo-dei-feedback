@@ -17,4 +17,4 @@ export default function Component() {
       <button className="bg-amber-500 px-3 py-2 m-4 rounded" onClick={() => signIn()}>Sign in</button>
     </>
   )
-}
+} 
