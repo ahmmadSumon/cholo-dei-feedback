@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     try {
       const  {searchParams} = new URL(request.url)
       const queryParams = {
-        username: searchParams.get('username')
+        username: searchParams.get('username') ?? ''
       }
       //validation with zod
      const result =  UsernameQuerySchema.safeParse(queryParams)
@@ -48,7 +48,7 @@ export async function GET(request: Request) {
       return Response.json({
             success: true,
             message:  'Username is available'
-        }, {status: 400 })
+        }, {status: 200 })
 
     } catch (error) {
         console.error( 'Error in checking username', error);

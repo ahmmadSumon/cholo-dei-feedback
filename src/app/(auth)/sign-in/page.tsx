@@ -1,75 +1,118 @@
 'use client'
 import React, {use, useState, useEffect } from "react"
-import { useDebounceValue } from 'usehooks-ts'
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import * as z from 'zod'
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { signUpSchema } from "@/app/schemas/signUpSchema"
-import axios,{AxiosError} from "axios"
-import { set } from "mongoose"
-import { ApiResponse } from "@/types/ApiResponse"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Loader } from 'lucide-react';
+import Link from "next/link"
+import { signInSchema } from "@/app/schemas/signInSchema"
+import { signIn } from "next-auth/react"
+
+
 
 const page = () => {
-   const [username, setUsername] = useState('')
-   const [usernameMessage, setUsernameMessage] = useState('')
-   const [isCheckingUsername, setIsCheckingUsername] = useState(false)
-   const [isSubmitting, setIsSubmitting] = useState(false)
+   
+
  
-    const debouncedUsername = useDebounceValue(username, 500)
+ 
     const router = useRouter()
 
     //zod implementation
-    const form = useForm<z.infer<typeof signUpSchema>>({
-      resolver: zodResolver(signUpSchema),
+    const form = useForm<z.infer<typeof signInSchema>>({
+      resolver: zodResolver(signInSchema),
       defaultValues : {
         username: '',
-        email: "",
         password: ''
       }
     })
     
-    useEffect(() => {
-        const checkUsernameUnique = async () => {
-          if(debouncedUsername){
-            setIsCheckingUsername(true)
-            setUsernameMessage('')
-            try {
-             const response =  await axios.get(`api/check-username-uniqueness?username=${debouncedUsername}`)
+ const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+    const result =   await signIn('credentials', {
+      redirect: false,
+        identifier: data.username,
+        password: data.password,
+      })
 
-             setUsernameMessage(response.data.message)
-            } catch (error) {
-              const  axiosError = error as AxiosError<ApiResponse>
-              setUsernameMessage(axiosError.response?.data.message ?? 'Error in checking username')
-            }
-            finally{
-              setIsCheckingUsername(false)
-            }
-          }
+      if(result?.error){
+        if(result.error === 'CredentialsSignIn'){
+            toast.error('Invalid username or password')
+        }else{
+          toast.error(result.error)
         }
-        checkUsernameUnique()
-    }, [debouncedUsername])
+       
 
-    const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
-      setIsSubmitting(true)
-      try {
-        await axios.post('api/sign-up', data)
-        toast('Account created successfully! Please check your email to verify your account.')
-        router.replace(`/verify/${username}`)
-        setIsSubmitting(false)
-
-      } catch (error) {
-        console.error('Error in sign up', error)
-        const  axiosError = error as AxiosError<ApiResponse>
-        toast.error(axiosError.response?.data.message ?? 'Error in sign up')
-        setIsSubmitting(false)
-      }
     }
+    if(result?.url){
+      router.replace('/dashboard')
+    }
+  }
+       
+         
+    
 
   return (
-    <div>page</div>
+   <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Create Account</h2>
+        <Form {...form}>
+        <form onSubmit= {form.handleSubmit(onSubmit)} className="space-y-4">
+         
+           <FormField
+           control={form.control}
+           name="username"
+           render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email/Username</FormLabel>
+             <FormControl>
+                <Input placeholder="email/username" 
+                {...field}
+            
+                />
+               
+                
+              </FormControl>
+             
+              <FormMessage />
+            </FormItem>
+           )}
+          />
+       <FormField
+  control={form.control}
+  name="password"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Password</FormLabel>
+      <FormControl>
+        <Input
+          type="password"
+          placeholder="password"
+          {...field}
+        />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+<button
+  type="submit"
+ 
+  className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition disabled:opacity-50"
+>
+ Sign In
+</button>
+        </form>
+        </Form>
+        <div className="mt-4 text-center">
+          <p>Not a member? {' '}</p>
+          <Link href="/sign-up" className="text-blue-600 hover:underline">Sign Up</Link>
+          </div>     
+      </div>
+    </div>
   )
 }
 
-export default page
+export default page;
