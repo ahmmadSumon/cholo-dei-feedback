@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Message from Alice",
+    "content": "Hey! Long time no chat, how are you?",
+    "receivedAt": "2025-09-01T08:25:00Z"
+  },
+  {
+    "title": "Message from Monu",
+    "content": "Bro, are you free this weekend? Let’s hang out.",
+    "receivedAt": "2025-09-01T11:45:00Z"
+  },
+  {
+    "title": "Message from Sonu",
+    "content": "I watched that movie you suggested, it was awesome!",
+    "receivedAt": "2025-09-02T09:15:00Z"
+  },
+  {
+    "title": "Message from Rina",
+    "content": "Good morning 🌸 Have a great day ahead!",
+    "receivedAt": "2025-09-02T10:30:00Z"
+  },
+  {
+    "title": "Message from Kabir",
+    "content": "Can you send me the notes for yesterday’s class?",
+    "receivedAt": "2025-09-02T15:20:00Z"
+  },
+  {
+    "title": "Message from Tina",
+    "content": "I just baked cookies 🍪 come over if you want some!",
+    "receivedAt": "2025-09-03T07:40:00Z"
+  },
+  {
+    "title": "Message from Rohit",
+    "content": "Match tonight? Don’t forget to bring the snacks!",
+    "receivedAt": "2025-09-03T18:55:00Z"
+  },
+  {
+    "title": "Message from Maya",
+    "content": "I loved your latest post on Instagram 🔥",
+    "receivedAt": "2025-09-04T12:10:00Z"
+  },
+  {
+    "title": "Message from Arjun",
+    "content": "What’s the plan for the holidays?",
+    "receivedAt": "2025-09-04T19:25:00Z"
+  },
+  {
+    "title": "Message from Nisha",
+    "content": "Don’t forget the party tomorrow 🎉",
+    "receivedAt": "2025-09-05T09:05:00Z"
+  },
+  {
+    "title": "Message from Samir",
+    "content": "Call me when you’re free, I need some advice.",
+    "receivedAt": "2025-09-05T14:50:00Z"
+  },
+  {
+    "title": "Message from Anita",
+    "content": "The coffee shop we went to was amazing ☕",
+    "receivedAt": "2025-09-06T11:35:00Z"
+  },
+  {
+    "title": "Message from Deepak",
+    "content": "Game night at my place? Bring your laptop.",
+    "receivedAt": "2025-09-06T20:15:00Z"
+  },
+  {
+    "title": "Message from Sonia",
+    "content": "Did you complete the assignment? I’m stuck 😅",
+    "receivedAt": "2025-09-07T13:40:00Z"
+  },
+  {
+    "title": "Message from Vikram",
+    "content": "Let’s go for a long drive this weekend 🚗",
+    "receivedAt": "2025-09-07T22:10:00Z"
+  }
+]
