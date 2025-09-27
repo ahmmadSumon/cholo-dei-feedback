@@ -2,7 +2,7 @@ import  dbConnect from "../../../lib/dbConnect";
 import UserModel from "../../../model/User";
 import bcrypt from 'bcryptjs';
 import {sendVerificationEmail} from "../../../helper/sendVerificationEmail";
-
+import { NextResponse } from "next/server";
   
 
 export async function POST(request : Request) {
@@ -17,10 +17,9 @@ export async function POST(request : Request) {
       })
 
       if(existingUserByName){
-        return Response.json({
-            success: false,
-            message: "Username already exists"
-        }, {status: 400})
+        return NextResponse.json(
+        { success: false, message: "Username already exists" },
+        { status: 400 })
        }
  // Step 4: Check if email already exists
       const existingUserByEmail = await UserModel.findOne({email})
@@ -28,10 +27,9 @@ export async function POST(request : Request) {
   // Email already registered and verified → stop
       if(existingUserByEmail){
         if(existingUserByEmail.isVerified){
-             return Response.json({
-            success: false,
-            message: "user already exists already wih this email"
-        }, {status: 400})
+             return NextResponse.json(
+          { success: false, message: "User already exists with this email" },
+          { status: 400 })
         }else{
             // Email exists but not verified → update with new password + code
             const hashedPassword = await bcrypt.hash(password, 10)
@@ -72,24 +70,23 @@ export async function POST(request : Request) {
       )
         
         if(!emailResponse.success){{
-            return Response.json({
-                success: false,
-                message: emailResponse.message
-            }, {status: 500})
+            return NextResponse.json(
+        { success: false, message: emailResponse.message },
+        { status: 500 })
         }}
        //eturn success message
-         return Response.json({
-                success: true,
-                message: "User registered successfully. Please check your email for the verification code."
-            }, {status: 201})
+         return NextResponse.json(
+      {
+        success: true,
+        message: "User registered successfully. Please check your email for the verification code.",
+      },
+      { status: 201 })
     } catch (error) {
           // Step 8: Handle errors
         console.error("Error in registering User", error);
-        return Response.json(
-            {success: false,
-                message: "Error in registering User"
-            },
-            {status: 500 }
+       return NextResponse.json(
+      { success: false, message: "Error registering user" },
+      { status: 500 }
         )
     }
 }

@@ -12,11 +12,11 @@ export async function sendVerificationEmail  (
      await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: email,
-      subject: 'Verify your email - MyApp',
+      subject: 'Verify your email - Cholo Dei Feedback',
       react: VerificationEmail({ username, otp: verifyCode }),
     });
       return {success:true, message:"Successfully send verification email" }
-    } catch (emailError) {
+    } catch (emailError: any) {
         console.log("Send Verification Email failed ", emailError);
         return {success:false, message:"Failed to send verification email" }
     }
