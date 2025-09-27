@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import CredentialsProvider from "next-auth/providers/credentials";
 import UserModel from "../../../../model/User"
@@ -79,3 +80,6 @@ export const authOptions: NextAuthOptions  =  {
     secret: process.env.NEXTAUTH_SECRET,
 
 }
+
+
+
