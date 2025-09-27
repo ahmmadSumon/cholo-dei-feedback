@@ -36,7 +36,7 @@ const MessageBox  = ({message} : MessageCardProps) => {
   const confirmHandleDelete = () => {
      const response = axios.delete<ApiResponse>(`/api.delete-message/${message.id}`)
      toast('Deleting message...')
-
+      console.log(response)
   }
     
 

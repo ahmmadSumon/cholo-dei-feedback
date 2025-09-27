@@ -58,7 +58,7 @@ const SignUp = () => {
           }
         }
         checkUsernameUnique()
-    }, [username])
+    }, [username, usernameMessage])
 
 //     useEffect(() => {
 //   if (!username.trim()) return; // skip if empty
