@@ -31,8 +31,8 @@ type MessageCardProps = {
     onMessageDelete: (messageId: string) => void;
 }
 
-const MessageBox  = ({message, onMessageDelete} : MessageCardProps) => {
-
+const MessageBox  = ({message} : MessageCardProps) => {
+//onMessageDelete
   const confirmHandleDelete = () => {
      const response = axios.delete<ApiResponse>(`/api.delete-message/${message.id}`)
      toast('Deleting message...')

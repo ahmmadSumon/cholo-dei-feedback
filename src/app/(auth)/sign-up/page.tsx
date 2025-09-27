@@ -1,6 +1,6 @@
 'use client'
-import React, {use, useState, useEffect } from "react"
-import { useDebounceValue , useDebounceCallback} from 'usehooks-ts'
+import React, { useState, useEffect } from "react"
+import {  useDebounceCallback} from 'usehooks-ts'
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import * as z from 'zod'
@@ -8,13 +8,15 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signUpSchema } from "@/app/schemas/signUpSchema"
 import axios,{AxiosError} from "axios"
-import { set } from "mongoose"
+
 import { ApiResponse } from "@/types/ApiResponse"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Loader } from 'lucide-react';
 import Link from "next/link"
-const page = () => {
+
+
+const SignUp = () => {
    const [username, setUsername] = useState('')
    const [usernameMessage, setUsernameMessage] = useState('')
    const [isCheckingUsername, setIsCheckingUsername] = useState(false)
@@ -184,4 +186,4 @@ const page = () => {
   )
 }
 
-export default page
+export default SignUp

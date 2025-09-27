@@ -1,9 +1,11 @@
 'use client'
 import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
-import React, { use } from 'react'
+import React from 'react'
 import {User} from 'next-auth'
 import { Button } from './ui/button'
+
+
 const Navbar = () => {
    const {data : session} = useSession()
    const user : User = session?.user

@@ -6,14 +6,14 @@ import { Message, User } from '@/model/User'
 import { ApiResponse } from '@/types/ApiResponse'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios, { AxiosError } from 'axios'
-import { set } from 'mongoose'
+
 import { useSession } from 'next-auth/react'
-import React, { use, useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { fa, tr } from 'zod/locales'
 
-const page = () => {
+
+const Dashboard = () => {
   const [ messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const[isSwitchLoading, setIsSwitchLoading] = useState(false)
@@ -173,4 +173,4 @@ if(!session || !session.user){
   )
 }
 
-export default page
+export default Dashboard

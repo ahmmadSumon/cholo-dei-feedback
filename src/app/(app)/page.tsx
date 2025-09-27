@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import {
   Carousel,
@@ -10,6 +9,8 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from 'embla-carousel-autoplay'
 import messages from '@/messages.json'
+
+
 export default function Home() {
   return (
     <main className="flex-grow min-h-[50vh] flex flex-col items-center justify-center px-4 md:px-24 py-12">

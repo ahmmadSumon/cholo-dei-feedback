@@ -1,6 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
-import { is } from "zod/locales";
 
 
 export async function POST (request:Request){

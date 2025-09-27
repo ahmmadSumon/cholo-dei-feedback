@@ -1,20 +1,19 @@
 'use client'
-import React, {use, useState, useEffect } from "react"
+import React from "react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import * as z from 'zod'
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Loader } from 'lucide-react';
 import Link from "next/link"
 import { signInSchema } from "@/app/schemas/signInSchema"
 import { signIn } from "next-auth/react"
 
 
 
-const page = () => {
+const SignIn = () => {
    
 
  
@@ -115,4 +114,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default SignIn;

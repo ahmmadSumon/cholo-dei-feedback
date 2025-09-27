@@ -19,7 +19,8 @@ const messageSchema = z.object({
 
 type MessageSchema = z.infer<typeof messageSchema>
 
-const Page = () => {
+
+const MessagePage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<MessageSchema>({
@@ -106,4 +107,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default MessagePage
