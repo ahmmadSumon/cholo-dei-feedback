@@ -58,7 +58,7 @@ const SignUp = () => {
           }
         }
         checkUsernameUnique()
-    }, [username, usernameMessage])
+    }, [username])
 
 //     useEffect(() => {
 //   if (!username.trim()) return; // skip if empty
@@ -120,7 +120,7 @@ const SignUp = () => {
               </FormControl>
              {isCheckingUsername && <Loader className="animate-spin"/>}
              <p className={`text-sm mt-1 ${usernameMessage === 'Username is available' ? 'text-green-600' : 'text-red-600'}`}>
-              TEST{usernameMessage}
+            {usernameMessage}
               
              </p>
               <FormMessage />

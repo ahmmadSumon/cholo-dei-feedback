@@ -44,7 +44,7 @@ const MessageBox  = ({message, onMessageDelete} : MessageCardProps) => {
   return (
     <Card>
       <CardHeader className="flex justify-between items-center">
-        <CardTitle>Anonymous Message</CardTitle>
+        <CardTitle>Anonymous Message </CardTitle>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" size="sm">X</Button>
@@ -65,6 +65,7 @@ const MessageBox  = ({message, onMessageDelete} : MessageCardProps) => {
       </CardHeader>
       <CardContent>
         <p>{message.content}</p>
+          
       </CardContent>
       <CardFooter className="text-sm text-gray-500">
         {new Date(message.createdAt).toLocaleString()}

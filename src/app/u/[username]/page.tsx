@@ -151,14 +151,10 @@ const MessagePage = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-6 text-center">
-          Send a message to {username}
+          Send message to {username}
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <input
-            placeholder="Use Fake Names"
-            className="w-full p-2 border rounded"
-            {...register("senderName")}
-          />
+         
           <textarea
             placeholder="Your Message"
             className="w-full p-2 border rounded resize-none"
