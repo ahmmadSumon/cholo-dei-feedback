@@ -155,7 +155,7 @@ const MessagePage = () => {
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input
-            placeholder="Your Name (Optional)"
+            placeholder="Use Fake Names"
             className="w-full p-2 border rounded"
             {...register("senderName")}
           />

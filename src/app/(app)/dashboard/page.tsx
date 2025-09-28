@@ -99,10 +99,10 @@ if(!session || !session.user){
   const baseUrl = `${window.location.protocol}//${window.location.host}`
   const profileUrl = `${baseUrl}/u/${username}`
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(profileUrl)
-    toast("Url copied to clipboard")
-  }
+ const copyToClipboard = () => {
+  navigator.clipboard.writeText(profileUrl)
+  toast("URL copied to clipboard ✅")
+}
 
    
 
@@ -158,14 +158,12 @@ if(!session || !session.user){
       </div>
 
       {/* Footer / Profile URL */}
-      <div className="mt-6  text-gray-600">
+     <div className="mt-6 text-gray-600">
         Your Profile URL:{" "}
-        <span className="font-mono gap-3.5 px-16 text-blue-600">{profileUrl}</span>
+        <span className="font-mono px-2 text-blue-600">{profileUrl}</span>
         <button
           onClick={copyToClipboard}
-          value={profileUrl}
-          disabled
-          className="px-4 py-2  bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+          className="ml-3 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
         >
           Copy Profile URL
         </button>

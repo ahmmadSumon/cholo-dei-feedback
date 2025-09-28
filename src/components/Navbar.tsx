@@ -21,6 +21,9 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           {session ? (
             <>
+            <div>
+              <Link href= '/dashboard'>Dashboard</Link>
+            </div>
               <span className="text-gray-700 font-medium">
                 Welcome, {user?.username || user?.email}
               </span>
