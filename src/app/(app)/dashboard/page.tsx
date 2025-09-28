@@ -95,6 +95,7 @@ if(!session || !session.user){
     return <div>Please sign in to access your dashboard</div>
    }
   const {username} = session?.user as User
+
   const baseUrl = `${window.location.protocol}//${window.location.host}`
   const profileUrl = `${baseUrl}/u/${username}`
 
@@ -112,15 +113,8 @@ if(!session || !session.user){
       
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-        <button
-          onClick={copyToClipboard}
-          value={profileUrl}
-          disabled
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-        >
-          Copy Profile URL
-        </button>
+        <h1 className="text-2xl font-bold text-gray-800">{username} Dashboard</h1>
+        
       </div>
 
       {/* Accept Messages Toggle */}
@@ -164,9 +158,17 @@ if(!session || !session.user){
       </div>
 
       {/* Footer / Profile URL */}
-      <div className="mt-6 text-gray-600">
+      <div className="mt-6  text-gray-600">
         Your Profile URL:{" "}
-        <span className="font-mono text-blue-600">{profileUrl}</span>
+        <span className="font-mono gap-3.5 px-16 text-blue-600">{profileUrl}</span>
+        <button
+          onClick={copyToClipboard}
+          value={profileUrl}
+          disabled
+          className="px-4 py-2  bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+        >
+          Copy Profile URL
+        </button>
       </div>
     </div>
   </div>
