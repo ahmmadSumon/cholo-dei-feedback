@@ -6,7 +6,7 @@ const Page = () => {
   const [name, setName] = useState<string>("");
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Stepper
         initialStep={1}
         onStepChange={(step) => {
