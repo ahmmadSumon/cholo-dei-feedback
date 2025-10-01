@@ -55,12 +55,12 @@ const SignIn = () => {
         <h2 className="text-3xl font-extrabold mb-6 text-center text-gray-800">🔐 Login</h2>
 
         {/* Clipboard section */}
-        <div className="mb-6 space-y-3">
+        <div className="mb-6 space-y-3 ">
           <div className="flex items-center justify-between bg-gray-100 rounded-lg px-3 py-2">
             <span className="font-mono text-sm text-gray-700">demo_user</span>
             <button
               type="button"
-              onClick={() => copyToClipboard("demo_user")}
+              onClick={() => copyToClipboard("smn")}
               className="text-blue-600 hover:text-blue-800 transition"
             >
               <Copy size={18} />
@@ -70,7 +70,7 @@ const SignIn = () => {
             <span className="font-mono text-sm text-gray-700">demo_pass</span>
             <button
               type="button"
-              onClick={() => copyToClipboard("demo_pass")}
+              onClick={() => copyToClipboard("123456789")}
               className="text-blue-600 hover:text-blue-800 transition"
             >
               <Copy size={18} />
