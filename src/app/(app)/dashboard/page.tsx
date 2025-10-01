@@ -162,7 +162,7 @@ if(!session || !session.user){
               key={message._id}
               message={message}
               onMessageDelete={handleDeleteMessage}
-              
+             
             />
           ))}
         </ul>

@@ -9,8 +9,8 @@ import {
   useAnimationFrame,
 } from "motion/react";
 
-// 🔹 Hook to measure element width
-function useElementWidth(ref: React.RefObject<HTMLElement>) {
+// 🔹 Generic Hook to measure element width
+function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T>) {
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -26,6 +26,8 @@ function useElementWidth(ref: React.RefObject<HTMLElement>) {
 
   return width;
 }
+
+
 
 // 🔹 Props typing
 interface ScrollVelocityProps {
@@ -45,7 +47,7 @@ interface ScrollVelocityProps {
 
 export const ScrollVelocity = ({
   scrollContainerRef,
-  texts = [], // ✅ properly typed as string[]
+  texts = [],
   velocity = 100,
   className = "",
   damping = 50,
@@ -99,8 +101,9 @@ export const ScrollVelocity = ({
       { clamp: false }
     );
 
-    const copyRef = useRef<HTMLSpanElement>(null);
-    const copyWidth = useElementWidth(copyRef);
+   // ✅ Usage with span
+const copyRef = useRef<HTMLSpanElement>(null!); // notice the `null!`
+const copyWidth = useElementWidth(copyRef);
 
     function wrap(min: number, max: number, v: number) {
       const range = max - min;
@@ -141,7 +144,10 @@ export const ScrollVelocity = ({
     }
 
     return (
-      <div className={`${parallaxClassName ?? ""} relative overflow-hidden`} style={parallaxStyle}>
+      <div
+        className={`${parallaxClassName ?? ""} relative overflow-hidden`}
+        style={parallaxStyle}
+      >
         <motion.div
           className={`${scrollerClassName ?? ""} flex whitespace-nowrap text-center font-sans text-4xl font-bold tracking-[-0.02em] drop-shadow md:text-[5rem] md:leading-[5rem]`}
           style={{ x, ...scrollerStyle }}
