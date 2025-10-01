@@ -162,7 +162,7 @@ if(!session || !session.user){
               key={message._id}
               message={message}
               onMessageDelete={handleDeleteMessage}
-              className="bg-gray-800 border border-gray-700 rounded-xl shadow-lg hover:shadow-2xl transition p-4"
+              
             />
           ))}
         </ul>
